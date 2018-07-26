@@ -3,18 +3,16 @@ package pl.sda.reservations.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.sda.reservations.model.MessageObject;
 import pl.sda.reservations.service.MemoryService;
 
-import java.util.List;
 
 @RestController
 public class MemoryController {
     @Autowired                                                  //automatyczne dołączenie Beana
     private MemoryService memoryService;
 
-    @GetMapping(path = "/dodajLiczbe")
-    public ResponseEntity parametrized(@RequestParam(name = "dodajLiczbe") int a) {
+    @GetMapping(path = "/addNumber")
+    public ResponseEntity parametrized(@RequestParam(name = "addNumber") int a) {
 
         return memoryService.addToList(a);
 
@@ -37,7 +35,7 @@ public class MemoryController {
 
     }
 
-    @GetMapping(path = "/podajNajmniejsza")
+    @GetMapping(path = "/showMin")
     public ResponseEntity showMin() {
 
         return memoryService.showMin();
@@ -45,7 +43,7 @@ public class MemoryController {
 
     }
 
-    @GetMapping(path = "/podajNajwieksza")
+    @GetMapping(path = "/showMax")
     public ResponseEntity showMax() {
 
         return memoryService.showMax();

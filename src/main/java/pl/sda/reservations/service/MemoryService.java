@@ -18,7 +18,7 @@ public class MemoryService {
 
     public ResponseEntity addToList(int number) {
         list.add(number);
-        return ResponseEntity.ok(number + " added");
+        return ResponseEntity.ok(number + " number added");
     }
 
     public ResponseEntity clearList() {
@@ -29,7 +29,7 @@ public class MemoryService {
     public ResponseEntity<String> showMin() {
         int min = 0;
         if (list.get(0) == null) {
-            return ResponseEntity.badRequest().body("Pusta");
+            return ResponseEntity.badRequest().body("Empty");
         } else {
             min = Collections.min(list);
         }
@@ -39,7 +39,7 @@ public class MemoryService {
     public ResponseEntity<String> showMax() {
         int max;
         if (list.get(0) == null) {
-            return ResponseEntity.badRequest().body("Pusta");
+            return ResponseEntity.badRequest().body("Empty");
         } else {
             max = Collections.max(list);
         }
@@ -48,10 +48,7 @@ public class MemoryService {
     }
 
     public ResponseEntity sortList() {
-        ArrayList<Integer> sortList = new ArrayList<>();
-
         Collections.sort(list);
-//        List<Integer> sorted = list.stream().sorted().collect(Collectors.toList());
         for(Integer sorted: list){
             System.out.println(sorted);
         }

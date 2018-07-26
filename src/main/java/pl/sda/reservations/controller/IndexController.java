@@ -74,7 +74,7 @@ public class IndexController {
         }
     }
 
-    @GetMapping(path = "/schoop")
+    @GetMapping(path = "/shop")
     public ResponseEntity parametrized(@RequestParam(name = "text") int r) {
 
         List<Integer> list = new ArrayList<>();
