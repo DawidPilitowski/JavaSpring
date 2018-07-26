@@ -4,8 +4,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class MemoryService {
@@ -26,8 +26,14 @@ public class MemoryService {
         return ResponseEntity.ok("clear");
     }
 
-    public Integer showMin() {
-        return null;
+    public ResponseEntity<String> showMin() {
+        int min = 0;
+        if (list.get(0) == null) {
+            return ResponseEntity.badRequest().body("Pusta");
+        } else {
+            min = Collections.min(list);
+        }
+        return ResponseEntity.ok("min: " + min);
     }
 
     public ResponseEntity<String> showMax() {
@@ -35,18 +41,20 @@ public class MemoryService {
         if (list.get(0) == null) {
             return ResponseEntity.badRequest().body("Pusta");
         } else {
-            max = list.get(0);
-            for (int number : list) {
-
-            }
+            max = Collections.max(list);
         }
 
-        return null;
+        return ResponseEntity.ok("min: " + max);
     }
 
-    public Integer sortList() {
+    public ResponseEntity sortList() {
         ArrayList<Integer> sortList = new ArrayList<>();
-        List<Integer> sorted = list.stream().sorted().collect(Collectors.toList());
-        return null;
+
+        Collections.sort(list);
+//        List<Integer> sorted = list.stream().sorted().collect(Collectors.toList());
+        for(Integer sorted: list){
+            System.out.println(sorted);
+        }
+        return ResponseEntity.ok(list);
     }
 }

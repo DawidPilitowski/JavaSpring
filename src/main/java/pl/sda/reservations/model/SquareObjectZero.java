@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SquareObjectInMinus {
+public class SquareObjectZero {
+    private double x0;
     private double delta;
-
-
 }

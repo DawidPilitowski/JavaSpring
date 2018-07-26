@@ -37,13 +37,13 @@ public class MemoryController {
 
     }
 
-//    @GetMapping(path = "/podajNajmniejsza")
-//    public ResponseEntity showMin() {
-//
-//        return memoryService.showMin();
-//
-//
-//    }
+    @GetMapping(path = "/podajNajmniejsza")
+    public ResponseEntity showMin() {
+
+        return memoryService.showMin();
+
+
+    }
 
     @GetMapping(path = "/podajNajwieksza")
     public ResponseEntity showMax() {
@@ -51,6 +51,11 @@ public class MemoryController {
         return memoryService.showMax();
 
 
+    }
+    @GetMapping(path = "/sortList")
+    public ResponseEntity sortList() {
+
+        return memoryService.sortList();
     }
 
 }

@@ -5,6 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.reservations.model.MessageObject;
 
+import pl.sda.reservations.model.SquareObjectInMinus;
+import pl.sda.reservations.model.SquareObjectInPlus;
+import pl.sda.reservations.model.SquareObjectZero;
 import pl.sda.reservations.service.MessageService;
 
 import java.util.ArrayList;
@@ -25,23 +28,28 @@ public class IndexController {
         return ResponseEntity.ok(messageService.getCounter());
     }
 
-//    @GetMapping(path = "/kwadratowe")
-//    public ResponseEntity parametrized(@RequestParam(name = "a") int a, @RequestParam(name = "b") int b,
-//                                       @RequestParam(name = "c") int c) {
-//
-//        int delta = b * b - 4 * a * c;
-//
-//        if (delta > 0) {
-//            double x1 = b / 2 * a;
-//            double x2 = 0 - (b / 2 * a);
-//            return ResponseEntity.ok(new SquareObjectInPlus(x1, x2, delta));                              //zawsze trzeba zwracać ResponseEntity!!!
-//
-//        } else if (delta == 0) {
-//            int x0 = 0 - (b / 2 * a);
-//            return ResponseEntity.ok(new SquareObjectInMinus(x0, delta));                              //zawsze trzeba zwracać ResponseEntity!!!
-//
-//        }return ResponseEntity.ok(new MessageObject("hello"+delta));
-//    }
+    @GetMapping(path = "/square")
+    public ResponseEntity kwadratowe(@RequestParam(name = "a") int a,
+                                     @RequestParam(name = "b") int b,
+                                     @RequestParam(name = "c") int c) {
+
+        double delta = b * b - 4 * a * c;
+        if (delta > 0) {
+
+            double x1 = (-b - Math.sqrt(delta)) / (2 * a);
+            double x2 = (-b + Math.sqrt(delta)) / (2 * a);
+
+            return ResponseEntity.ok(new SquareObjectInPlus(x1, x2, delta));
+        } else if (delta == 0) {
+            double x0 = (-b) / (2 * a);
+
+            return ResponseEntity.ok(new SquareObjectZero(x0, delta));
+        } else {
+            return ResponseEntity.ok(new SquareObjectInMinus(delta));
+
+        }
+
+    }
 
     @GetMapping(path = "/parametrized")
     public ResponseEntity parametrized(@RequestParam(name = "who") String who) {
