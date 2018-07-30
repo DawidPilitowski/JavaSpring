@@ -8,7 +8,7 @@ import pl.sda.reservations.service.MemoryService;
 
 @RestController
 public class MemoryController {
-    @Autowired                                                  //automatyczne dołączenie Beana
+    @Autowired                                                  
     private MemoryService memoryService;
 
     @GetMapping(path = "/addNumber")
