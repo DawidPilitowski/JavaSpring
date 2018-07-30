@@ -15,12 +15,12 @@ import java.util.List;
 
 @RestController
 public class IndexController {
-    @Autowired                                                  //automatyczne dołączenie Beana
+    @Autowired                                                 
     private MessageService messageService;
 
     @RequestMapping(path = "/index", method = RequestMethod.GET)
     public ResponseEntity index() {
-        return ResponseEntity.ok(new MessageObject("Hello!")); // wyświetlania obiektów JSON
+        return ResponseEntity.ok(new MessageObject("Hello!")); 
     }
 
     @RequestMapping(path = "/count", method = RequestMethod.GET)
@@ -53,7 +53,7 @@ public class IndexController {
 
     @GetMapping(path = "/parametrized")
     public ResponseEntity parametrized(@RequestParam(name = "who") String who) {
-        return ResponseEntity.ok(new MessageObject("Hello " + who + "!"));                              //zawsze trzeba zwracać ResponseEntity!!!
+        return ResponseEntity.ok(new MessageObject("Hello " + who + "!"));                            
     }
 
     @GetMapping(path = "/new")
