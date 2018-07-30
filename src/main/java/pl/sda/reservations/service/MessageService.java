@@ -2,7 +2,6 @@ package pl.sda.reservations.service;
 
 import org.springframework.stereotype.Service;
 
-//Servis powinien być bezstanowy
 
 @Service
 public class MessageService {
